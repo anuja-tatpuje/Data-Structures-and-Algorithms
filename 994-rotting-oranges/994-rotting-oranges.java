@@ -38,6 +38,7 @@ class Solution {
                     int x = row + dir[0];
                     int y = col + dir[1];
                     
+                    //checking if calculated x & y goes beyond grid limits
                     if(x>=0 && y>=0 && x<n && y<m && grid[x][y] == 1) {
                         grid[x][y] = 2;
                         freshOranges--;
