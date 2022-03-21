@@ -15,8 +15,7 @@ class Solution {
             for(int j=0;j<m;j++) {
                 if(mat[i][j] == 0) {
                     que.addLast(i*m+j);
-                } else {
-                    ans[i][j] = -1;
+                    ans[i][j] = 0;
                 }
             }
         }
@@ -31,11 +30,7 @@ class Solution {
                 
                 int row = top / m;
                 int col = top % m;
-                
-                if(ans[row][col] != -1) continue;
-                
-                ans[row][col] = level;
-                
+                    
                 int[][] dirs={{0,1},{0,-1},{1,0},{-1,0}};
                 
                 for(int[] dir : dirs) {
@@ -44,8 +39,7 @@ class Solution {
                     
                     if(x>=0 && y>=0 && x<n && y<m && ans[x][y] == -1) {  
                          que.addLast(x*m+y);
-                        
-                        
+                        ans[x][y] = level+1;
                     }
                 }
             }
