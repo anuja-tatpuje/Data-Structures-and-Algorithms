@@ -43,10 +43,10 @@ class Solution {
                 for(int[] dir : dirs) {
                     int x = row + dir[0];
                     int y = col + dir[1];
-                    
+                    //creating indegree in order to check I am coming from best possible path
                     if(x>=0 && y>=0 && x<n && y<m && matrix[x][y] > matrix[row][col]) {
                         ndegree[x][y]--;
-                        
+                        //if indegree is 0 then I am coming from best path
                         if(ndegree[x][y] == 0) {
                             que.addLast(x*m+y);
                         }
