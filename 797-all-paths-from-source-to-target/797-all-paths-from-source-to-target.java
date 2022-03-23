@@ -24,6 +24,7 @@ class Solution {
                 
                 allPathsFromSourceTarget(nbr,dest,vis,graph);
                  
+                //removing prior paths which are added to arraylist
                 path.remove(path.size()-1);
             }
         }
