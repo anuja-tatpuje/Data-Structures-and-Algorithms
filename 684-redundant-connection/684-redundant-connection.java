@@ -19,10 +19,6 @@ class Solution {
             size[p2] += size[p1];
         }
     }
-    public void addEdge(ArrayList<Integer>[] ngraph,int u,int v) {
-        ngraph[u].add(v);
-        ngraph[v].add(u);
-    }
     
     public int[] findRedundantConnection(int[][] edges) {
         int n = edges.length+1;
