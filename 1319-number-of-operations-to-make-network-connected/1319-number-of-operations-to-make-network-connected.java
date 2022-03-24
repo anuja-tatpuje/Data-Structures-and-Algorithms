@@ -28,14 +28,13 @@ class Solution {
             return -1;
         }
         
-        int cn = n;
         int numberOfConnections = 0;
         
-        par = new int[cn];
-        size = new int[cn];
+        par = new int[n];
+        size = new int[n];
         
         //initializing parent array
-        for(int i=0;i<cn;i++) {
+        for(int i=0;i<n;i++) {
             par[i] = i;
             size[i] = 1;
         }
@@ -52,6 +51,8 @@ class Solution {
             } 
         }
         
+        //to connect n components we need n-1 edges
+        //counting different components represents to different leaders
         for(int i=0;i<par.length;i++) {
             if(par[i] == i)
                 numberOfConnections++;
