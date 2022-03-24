@@ -26,11 +26,6 @@ class Solution {
     
     public int[] findRedundantConnection(int[][] edges) {
         int n = edges.length+1;
-        ArrayList<Integer>[] graph = new ArrayList[n];
-        
-        for(int i=0;i<n;i++) {
-            graph[i] = new ArrayList<>();
-        }
         
         par = new int[n];
         size = new int[n];
@@ -40,18 +35,18 @@ class Solution {
             size[i] = 1;
         }
         
-         for(int i = 0; i < edges.length; i++) {
-            int u = edges[i][0];
-            int v = edges[i][1];
+         for(int edge[] : edges) {
+            int u = edge[0];
+            int v = edge[1];
             
             int lu = findParent(u);
             int lv = findParent(v);
             
             if(lu != lv) {
-                merge(lu,lv);
-                addEdge(graph,lu,lv);
-            } else {
-                return edges[i];   
+                merge(lu,lv); 
+            }  else {
+                //cycle exits
+                return edge;   
             }
         }
             
