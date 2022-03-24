@@ -39,9 +39,9 @@ class Solution {
             size[i] = 1;
         }
         
-        for(int i=0;i<connections.length;i++) {
-            int u = connections[i][0];
-            int v = connections[i][1];
+        for(int[] edge : connections) {
+            int u = edge[0];
+            int v = edge[1];
             
             int lu = findParent(u);
             int lv = findParent(v);
