@@ -27,9 +27,7 @@ class Solution {
             // impossible to connect all n vertices/computers
             return -1;
         }
-        
-        int numberOfConnections = 0;
-        
+          
         par = new int[n];
         size = new int[n];
         
@@ -38,6 +36,8 @@ class Solution {
             par[i] = i;
             size[i] = 1;
         }
+    
+        int numberOfConnections = n;
         
         for(int[] edge : connections) {
             int u = edge[0];
@@ -47,16 +47,18 @@ class Solution {
             int lv = findParent(v);
             
             if(lu != lv) {
+                numberOfConnections--;
                 merge(lu,lv);
             } 
         }
         
-        //to connect n components we need n-1 edges
+/*        //to connect n components we need n-1 edges
         //counting different components represents to different leaders
         for(int i=0;i<par.length;i++) {
             if(par[i] == i)
                 numberOfConnections++;
-        }
+        } 
+        */
         
        return numberOfConnections-1;
     }
