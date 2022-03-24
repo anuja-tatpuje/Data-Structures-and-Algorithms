@@ -37,6 +37,7 @@ class Solution {
             size[i] = 1;
         }
     
+        //initially we have n components and when we merge then it reduces;
         int numberOfConnections = n;
         
         for(int[] edge : connections) {
