@@ -4,16 +4,16 @@ class Solution {
         
         for(int nbr : graph[src]) {
             if(vis[nbr] == 0) {
-                boolean ans = dfs(nbr,graph,vis); 
-                if(ans) return true;
+                boolean cycle = dfs(nbr,graph,vis);
+                if(cycle) return true;
             } else if(vis[nbr] == 1) {
                 return true;
             }
         }
-        
         vis[src] = 2;
         
         return false;
+        
     }
     public List<Integer> eventualSafeNodes(int[][] graph) {
         int V = graph.length;
@@ -26,11 +26,12 @@ class Solution {
                 boolean cycle = dfs(i,graph,vis);
                 if(cycle == false) {
                     ans.add(i);
-                }
+                }  
             } else if(vis[i] == 2) {
                 ans.add(i);
             }
-        }        
+        }
+        
         return ans;
     }
 }
