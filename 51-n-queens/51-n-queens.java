@@ -2,7 +2,7 @@ class Solution {
     List<List<String>> queen = new ArrayList<>();
     public List<List<String>> solveNQueens(int n) {
         boolean[][] queens = new boolean[n][n];
-        solveNQueens(queens,0,"");
+        solveNQueens(queens,0);
         return queen;
     }
     
@@ -10,9 +10,9 @@ class Solution {
         int n = queens.length;
         int[][] dirs = {{-1,0},{-1,1},{0,1},{1,1},{1,0},{1,-1},{0,-1},{-1,-1}};
         for(int dist=1;dist<=n;dist++) {
-            for(int j=0;j<8;j++) {
-                int rm = dirs[j][0];
-                int cm = dirs[j][1];
+            for(int[] dir : dirs) {
+                int rm = dir[0];
+                int cm = dir[1];
                 int nr = row + (dist*rm);
                 int nc = col + (dist*cm);
                 
@@ -26,7 +26,7 @@ class Solution {
         return true;
     }
     
-    public void solveNQueens(boolean[][] queens,int row,String psf) {
+    public void solveNQueens(boolean[][] queens,int row) {
         if(row == queens.length) {
             queen.add(getBoard(queens));
             return;
@@ -34,7 +34,7 @@ class Solution {
         for(int col=0;col<queens.length;col++) {
             if(isMyQueenSafe(queens,row,col) == true) {
                 queens[row][col] = true;
-                solveNQueens(queens,row+1,psf+row+"-"+col+", ");
+                solveNQueens(queens,row+1);
                 queens[row][col] = false;
             }
         }
