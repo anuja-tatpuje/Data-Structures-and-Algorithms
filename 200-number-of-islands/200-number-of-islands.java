@@ -47,9 +47,7 @@ class Solution {
               
             int x = top / m;
             int y = top % m;
-            
-          
-            
+              
           int[][] dirs={{0,1},{0,-1},{1,0},{-1,0}};
         
           for(int[] dir : dirs) {
