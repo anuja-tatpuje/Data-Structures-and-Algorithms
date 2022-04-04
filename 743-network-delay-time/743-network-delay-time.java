@@ -6,20 +6,21 @@ class Solution {
             graph[i] = new ArrayList<>();
         }
         
+        
         for(int[] edge : times) {
-            int u = edge[0]-1;
-            int v = edge[1]-1;
+            int u = edge[0] - 1;
+            int v = edge[1] - 1;
             int w = edge[2];
             
             graph[u].add(new int[]{v,w});
         }
         
-        PriorityQueue<int[]> pq = new PriorityQueue<>((int[] a,int[] b) ->{
-           return a[1] - b[1]; 
-        });
-        
         int[] dis = new int[n];
         Arrays.fill(dis,(int)(1e8));
+        
+        PriorityQueue<int[]> pq = new PriorityQueue<>((int[] a,int[] b)->{
+           return a[1] - b[1]; 
+        });
         
         dis[k-1] = 0;
         
@@ -27,30 +28,30 @@ class Solution {
         
         while(pq.size()>0) {
             int[] top = pq.remove();
-            
-            int node = top[0];
+        
+            int v = top[0];
             int wsf = top[1];
             
-            if(dis[node] < wsf) continue;
+            if(dis[v] < wsf) continue;
             
-            for(int[] edge : graph[node]) {
+            for(int[] edge : graph[v]) {
+                int nbr = edge[0];
                 int wt = edge[1];
-                int v = edge[0];
                 
-                if(dis[v] > wt+wsf) {
-                    pq.add(new int[]{v,wt+wsf});
-                    dis[v] = wt+wsf;
+                if(dis[nbr] > wsf + wt) {
+                    dis[nbr] = wsf + wt;
+                    pq.add(new int[]{nbr,wsf+wt});
                 }
             }
         }
         
-        int max_time = 0;
         
+        int maxTime = 0;
         for(int i=0;i<n;i++) {
             if(dis[i] == 1e8) return -1;
-            max_time = Math.max(max_time,dis[i]);
+            maxTime = Math.max(maxTime,dis[i]);
         }
         
-        return max_time;
+        return maxTime;
     }
 }
