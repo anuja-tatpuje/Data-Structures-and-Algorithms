@@ -5,7 +5,7 @@ class Solution {
         
         int[][] dp = new int[n][m];
         
-        return recMinPathSumMemo(0,0,n,m,grid,dp);
+        return recMinPathSumTab(n,m,grid);
         
     }
     public int recMinPathSum(int i,int j,int n,int m,int[][] grid) {
@@ -38,5 +38,27 @@ class Solution {
         }
         
         return dp[i][j] = ans + grid[i][j];
+    }
+    public int recMinPathSumTab(int n,int m,int[][] grid) {
+        int[][] dp = new int[n][m];
+        
+        for(int i = n-1;i >= 0;i--) {
+            for(int j = m-1;j >= 0;j--) {
+                if(i == n-1 && j == m-1) {
+                    dp[i][j] = grid[i][j];
+                }
+                else if(i==n-1) {
+                    dp[i][j] = dp[i][j+1] + grid[i][j];
+                }
+                else if(j== m-1) {
+                    dp[i][j] = dp[i+1][j] + grid[i][j]; 
+                } else {
+                    dp[i][j] = Math.min(dp[i][j+1],dp[i+1][j]) + grid[i][j];
+                }
+            }
+        }
+        
+       
+        return dp[0][0];
     }
 }
