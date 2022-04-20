@@ -1,5 +1,11 @@
 class Solution {
     public int rob(int[] nums) {
+       
+        int ans = robInLessSpace(nums);
+        return ans;
+       
+    }
+    public int robDp(int[] nums) {
         int n = nums.length;
         
         int[] incl = new int[n];
@@ -22,8 +28,10 @@ class Solution {
           int excl = 0;
         
          for(int i=1;i<n;i++) {
-            incl = excl+nums[i];
-            excl = Math.max(incl,excl);
+            int nincl = excl+nums[i];
+            int nexcl = Math.max(incl,excl);
+            incl = nincl;
+            excl = nexcl;
         }
         
         return Math.max(incl,excl);
