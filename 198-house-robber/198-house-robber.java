@@ -15,4 +15,17 @@ class Solution {
         
         return Math.max(incl[n-1],excl[n-1]);
     }
+    public int robInLessSpace(int[] nums) {
+          int n = nums.length;
+        
+          int incl = nums[0];
+          int excl = 0;
+        
+         for(int i=1;i<n;i++) {
+            incl = excl+nums[i];
+            excl = Math.max(incl,excl);
+        }
+        
+        return Math.max(incl,excl);
+    }
 }
