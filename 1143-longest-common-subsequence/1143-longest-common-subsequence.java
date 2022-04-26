@@ -3,7 +3,7 @@ class Solution {
         int n = text1.length();
         int m= text2.length();
         int[][] dp = new int[n+1][m+1];
-        int ans = longestCommonSubsequence_memoi(n,text1,m,text2,dp);
+        int ans = longestCommonSubsequence_tab(n,text1,m,text2);
         return ans;
     }
     public int longestCommonSubsequence(int n,String text1,int m,String text2) {
@@ -30,5 +30,23 @@ class Solution {
         } else {
             return dp[n][m]=Math.max(longestCommonSubsequence_memoi(n,text1,m-1,text2,dp),longestCommonSubsequence_memoi(n-1,text1,m,text2,dp));
         }
+    }
+    
+    public int longestCommonSubsequence_tab(int n,String text1,int m,String text2) {
+        int[][] dp = new int[n+1][m+1];
+        
+        for(int i=0;i<=n;i++) {
+            for(int j=0;j<=m;j++) {
+                if(i==0 || j==0) {
+                    dp[i][j] = 0;
+                } else if(text1.charAt(i-1)==text2.charAt(j-1)) {
+                    dp[i][j] = dp[i-1][j-1]+1;
+                } else {
+                    dp[i][j] = Math.max(dp[i-1][j],dp[i][j-1]);
+                }
+            }
+        }
+        
+        return dp[n][m];
     }
 }
