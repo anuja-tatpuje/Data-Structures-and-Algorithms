@@ -3,7 +3,7 @@ class Solution {
         int lw1 = word1.length();
         int lw2 = word2.length();
         int[][] dp = new int[lw1+1][lw2+1];
-        int ans = minDistanceMemoi(lw1,word1,word2,lw2,dp);
+        int ans = minDistanceTab(lw1,word1,word2,lw2);
         return ans;
     }
     public int minDistanceRec(int n,String word1, String word2,int m) {
@@ -33,5 +33,29 @@ class Solution {
         int rep = minDistanceMemoi(n-1,word1,word2,m-1,dp)+1;
         
         return dp[n][m] = Math.min(ins,Math.min(del,rep));
+    }
+    public int minDistanceTab(int N,String word1, String word2,int M) {
+        int[][] dp = new int[N+1][M+1];
+        
+        for(int n=0;n<=N;n++) {
+            for(int m=0;m<=M;m++) {
+                if(n==0 || m==0) {
+                    dp[n][m] = (n==0) ? m : n;
+                    continue;
+                }
+
+                if(word1.charAt(n-1) == word2.charAt(m-1)) {
+                   dp[n][m] = dp[n-1][m-1]; //,word1,word2,m-1,dp);
+                    continue;
+                }
+                
+                int ins = dp[n][m-1]+1;
+                int del = dp[n-1][m]+1;
+                int rep = dp[n-1][m-1]+1;
+
+                dp[n][m] = Math.min(ins,Math.min(del,rep));
+            }
+        } 
+        return dp[N][M];
     }
 }
