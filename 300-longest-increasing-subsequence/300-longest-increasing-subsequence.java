@@ -1,23 +1,21 @@
 class Solution {
     //solution with O(n^2)
-    public int lengthOfLISGON2(int[] nums){
+    public int lengthOfLIS(int[] nums){
         int n = nums.length;
-        int[] dp = new int[nums.length];
         
-        int lis = 0;
+        int[] dp = new int[n];
+        int ans =0;
         
         for(int i=0;i<n;i++) {
             dp[i] = 1;
-            
-            for(int j = i-1;j>=0;j--) {
+            for(int j=i-1;j>=0;j--) {
                 if(nums[j]<nums[i]) {
-                    dp[i] = Math.max(dp[i],dp[j] + 1);
+                    dp[i] = Math.max(dp[i],dp[j]+1);
                 }
             }
-            lis = Math.max(lis,dp[i]);
+            ans = Math.max(ans,dp[i]);
         }
-        
-        return lis;
+        return ans;
     }
     public int Bs(ArrayList<Integer> dp,int ele){
         int si = 0;
@@ -34,7 +32,7 @@ class Solution {
         
         return si;
     }
-    public int lengthOfLIS(int[] nums) {
+    public int lengthOfLISOnLogN(int[] nums) {
         int n = nums.length;
         
         ArrayList<Integer> dp = new ArrayList<>();
