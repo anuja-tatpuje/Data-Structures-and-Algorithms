@@ -1,6 +1,6 @@
 class Solution {
     //solution with O(n^2)
-    public int lengthOfLIS(int[] nums){
+    public int lengthOfLISOn2(int[] nums){
         int n = nums.length;
         
         int[] dp = new int[n];
@@ -32,7 +32,7 @@ class Solution {
         
         return si;
     }
-    public int lengthOfLISOnLogN(int[] nums) {
+    public int lengthOfLIS(int[] nums) {
         int n = nums.length;
         
         ArrayList<Integer> dp = new ArrayList<>();
