@@ -42,7 +42,7 @@ class Solution {
             
             int pos = Bs(dp,ele);
             
-            if(pos == dp.size()) {
+            if(pos==dp.size()) {
                 dp.add(ele);
             } else {
                 dp.set(pos,ele);
