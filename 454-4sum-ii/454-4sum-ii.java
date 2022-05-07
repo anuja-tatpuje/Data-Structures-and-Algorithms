@@ -10,7 +10,7 @@ class Solution {
             }
         }
         
-        //generating B's
+        //generating B's and checking if we can pair up that with all combination placed in hashmap.
         int count = 0;
         for(int c: nums3) {
             for(int d:nums4) {
