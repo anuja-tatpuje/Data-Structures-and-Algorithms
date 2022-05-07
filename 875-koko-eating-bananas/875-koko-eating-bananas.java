@@ -17,20 +17,17 @@ class Solution {
             max = Math.max(max,piles[i]);
         }
                 
-        int ans = 0;
         int si = 1;
         int ei = max;
         while(si<=ei) {
             int mid = (si+ei)/2;
             
             if(check(piles,h,mid)) {
-                ans = mid;
                 ei = mid-1;
             } else {
                 si = mid +1;
             }
         }
-    
-        return ans;
+        return si;
     }
 }
