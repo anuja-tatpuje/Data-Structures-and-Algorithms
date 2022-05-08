@@ -2,6 +2,8 @@ class Solution {
     public int lengthOfLongestSubstring(String s) {
         int si = 0;
         int ei = 0;
+        int gsi = -1;
+        int gei = -1;
         
         //correct window --> {si,ei-1} 
         
@@ -29,9 +31,11 @@ class Solution {
             
             if(ans<(ei-si)) {
                 ans = ei-si;
+                gsi = si;
+                gei = ei;
             }
         } 
-        
+        System.out.println(s.length() == 0 ? "" : s.substring(gsi,gei));
         return ans;
     }
 }
