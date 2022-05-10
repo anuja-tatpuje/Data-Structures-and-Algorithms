@@ -6,7 +6,7 @@ class Solution {
         return fcsum;
     }
     public void helper(int start,int n,int k) {
-        if(n<0) return;
+        if(n<0 || k<0) return;
         if(n==0 && k==0) {
             fcsum.add(new ArrayList<>(csum));
             return;
