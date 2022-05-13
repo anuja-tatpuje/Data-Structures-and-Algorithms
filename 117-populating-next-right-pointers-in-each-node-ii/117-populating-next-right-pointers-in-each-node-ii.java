@@ -25,11 +25,10 @@ class Solution {
     public Node connect(Node root) {
         if(root == null) 
             return root;
-        Node rootNode = helper(root);
-        return rootNode;
+         helper(root);
+        return root;
     }
-    public Node helper(Node root) {
-        Node rootNode = root;
+    public void helper(Node root) {
         
         LinkedList<Node> que = new LinkedList<>();
         que.addLast(root);
@@ -52,7 +51,5 @@ class Solution {
                 }
             }
         }
-        
-        return rootNode;
     }
 }
