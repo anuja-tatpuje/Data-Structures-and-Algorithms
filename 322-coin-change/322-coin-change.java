@@ -1,9 +1,5 @@
 class Solution {
     public int coinChange(int[] coins, int amount) {
-        int[][] dps = new int[coins.length+1][amount+1];
-        for(int[] dp : dps) {
-            Arrays.fill(dp,-1);
-        }
         int ans = helper_Tab(coins,amount,coins.length);
         
         return ans == 1e9 ? -1 : ans;
