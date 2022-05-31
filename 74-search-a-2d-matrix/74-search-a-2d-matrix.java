@@ -7,9 +7,7 @@ class Solution {
         
         while(si<=ei) {
             int mid = (si+ei) / 2;
-            
-            System.out.println(mid);
-                        
+                                    
             int row = mid / m;
             int col = mid % m;
             
