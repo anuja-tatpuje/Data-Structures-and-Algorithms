@@ -25,7 +25,9 @@ class Solution {
         int left = Math.max(helper(root.left),0);
         int right = Math.max(helper(root.right),0);
         
-        maxSum = Math.max(maxSum,left+right+root.val);
+        int curr_max = left+ right + root.val;
+        
+        maxSum = Math.max(curr_max,maxSum);
             
         return Math.max(left,right) + root.val;
     }
