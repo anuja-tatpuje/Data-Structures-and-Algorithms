@@ -39,9 +39,6 @@ class Solution {
                 map.put(num-left,sum);
                 map.put(num+right,sum);
            }
-            else {
-                continue;
-            }
         }
         
         return maxStreak;
