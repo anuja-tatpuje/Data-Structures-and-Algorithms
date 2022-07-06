@@ -8,6 +8,9 @@ class Solution {
         if(dp[n] != 0)  return dp[n];
         
         int ans = fib_Memoi(n-2,dp) + fib_Memoi(n-1,dp);
+        
+        dp[n] = ans;
+        
         return ans;
     }
 }
