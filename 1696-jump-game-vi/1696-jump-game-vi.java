@@ -2,11 +2,13 @@ class Solution {
     public int maxResult(int[] nums,int k) {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a,b) ->(b[0] - a[0]));
         
+        //putting max score in priority queue
         pq.add(new int[]{nums[0],0});
         
         int maxScore = nums[0];
         
         for(int i=1;i<nums.length;i++) {
+            //checking if current index and max Score index is in window of K
             while(pq.peek()[1] < i-k) {
                 pq.remove();
             }
