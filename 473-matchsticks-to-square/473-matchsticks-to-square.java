@@ -24,6 +24,8 @@ class Solution {
             visited[i] = true;
             if(rec(arr,i+1,currSum+arr[i],tar,k,visited)) return true;
             visited[i] = false;
+            
+            if(currSum==0)break;  
         }
         
         return false;
