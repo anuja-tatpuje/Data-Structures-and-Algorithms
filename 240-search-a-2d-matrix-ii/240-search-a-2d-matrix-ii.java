@@ -10,11 +10,7 @@ class Solution {
         }
         
         return false; */
-        
-        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
-        return false;
-
-        
+      
         int row = 0;
         int col = m-1;
         while(row<n && col>=0) {
