@@ -11,6 +11,10 @@ class Solution {
         
         return false; */
         
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0)
+        return false;
+
+        
         int row = 0;
         int col = m-1;
         while(row<n && col>=0) {
@@ -25,6 +29,7 @@ class Solution {
         
         return false;
     }
+    //time limit exceeding
     public int searchMatrix(int[][] matrix,int row,int si,int ei,int tar) {
         while(si<ei) {
             int midCol = (ei-si) / 2;
