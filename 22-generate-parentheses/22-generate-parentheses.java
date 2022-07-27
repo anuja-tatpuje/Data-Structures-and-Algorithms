@@ -13,6 +13,7 @@ class Solution {
             generatePara(open+1,close,max,par+"(");
         }
         if(close < open) {
+            //generating closed paranthesis lesser than open brackets
             generatePara(open,close+1,max,par+")");
         }
     }
