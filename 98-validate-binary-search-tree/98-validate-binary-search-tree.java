@@ -14,7 +14,17 @@
  * }
  */
 class Solution {
-    public boolean isValidBST(TreeNode root) {   
+    public boolean isValidBSTBoolean(TreeNode root,long lowerLimit,long upperLimit) {
+        if(root == null) return true;
+        if(root.left != null && (root.left.val >= root.val || root.left.val <= lowerLimit)) return false;
+        if(root.right != null && (root.right.val <= root.val || root.right.val >= upperLimit)) return false;
+           
+         return isValidBSTBoolean(root.left,lowerLimit,root.val) && isValidBSTBoolean(root.right,root.val,upperLimit);  
+    }
+    public boolean isValidBST(TreeNode root) {
+        return isValidBSTBoolean(root,Long.MIN_VALUE,Long.MAX_VALUE);
+    }       
+    public boolean isValidBSTWithMorris(TreeNode root) {   
          TreeNode curr = root;
          TreeNode prev = null;
          
