@@ -6,10 +6,10 @@ class Solution {
         for(int[] ar : dp)
             Arrays.fill(ar, -1);
         
-        return helper(d,k,target,dp);
+        return helperMemoi(d,k,target,dp);
         
     }
-    public int helper(int d,int k,int target,int[][] dp) {
+    public int helperMemoi(int d,int k,int target,int[][] dp) {
         if(d == 0 && target == 0) {
             return 1;
         }
@@ -20,7 +20,7 @@ class Solution {
         int count = 0;
         
         for(int face = 1; face <= k; face++) {
-             count = (count+helper(d-1,k,target-face,dp))%mod;
+             count = (count+helperMemoi(d-1,k,target-face,dp))%mod;
         }
         
         dp[d][target] = count;
