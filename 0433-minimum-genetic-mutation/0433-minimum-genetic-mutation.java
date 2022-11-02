@@ -37,7 +37,6 @@ class Solution {
                         currWordArray[j] = c;
                         
                         String newFormedWord = new String(currWordArray);
-                        System.out.println("newly formed word: "+newFormedWord);
                         
                         if(end.equals(newFormedWord) && bankSet.contains(newFormedWord)){
                             return mutation;
