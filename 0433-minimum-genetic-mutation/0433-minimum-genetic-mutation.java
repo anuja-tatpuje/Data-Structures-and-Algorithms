@@ -21,6 +21,8 @@ class Solution {
         
         int mutation = 0;
         
+        //using BFS to replace and check by replacing every character and then checking into hashset 
+        // if word exists 
         while(que.size() > 0) {
              mutation++;
             int size = que.size();
@@ -33,6 +35,7 @@ class Solution {
                 for(int j=0;j<currWordArray.length;j++) {
                     char temp = currWord.charAt(j);
                     
+                    //replacing every single character and checking if that exists in the hashset
                     for(char c : alphabetlist) {
                         currWordArray[j] = c;
                         
@@ -50,6 +53,7 @@ class Solution {
                         bankSet.remove(newFormedWord);
                     }
                     
+                    //making string if that exists into the hashset
                     currWordArray[j] = temp;
                 }
             }
